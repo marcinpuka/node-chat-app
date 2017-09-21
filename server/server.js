@@ -18,9 +18,23 @@ app.use(express.static(publicPath));
 //--- register event(connection) listener
 io.on("connection", (socket) => {
     console.log("New user connected ");
+    
+    // here as 2. argument we can send data i.e. object
+    
+    console.log("message sent...");
+    socket.emit("newMessage", {
+        from: "Eva", 
+        text: "whats up, baby?", 
+        createdAt: 125
+    });
+    
 
     socket.on("disconnect", () => {
         console.log("User disconnected");
+    });
+    
+    socket.on("createMessage", (message) => {
+        console.log("Create message...", message);       
     });
 
 });
