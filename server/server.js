@@ -13,7 +13,7 @@ var io = socketIO(server);
 
 
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 app.use(express.static(publicPath));
 
@@ -32,7 +32,7 @@ io.on("connection", (socket) => {
     });
     
     socket.on("createMessage", (message, callback) => {
-        console.log("Create message...", message); 
+        //console.log("Create message...", message); 
         //emits event to every single connection 
         io.emit("newMessage", generateMessage(message.from, message.text));
         callback();
