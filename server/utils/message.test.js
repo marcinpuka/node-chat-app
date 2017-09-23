@@ -29,4 +29,5 @@ describe("generateLocationMessage", () => {
       expect(message).toInclude({from, url});
       
    });
+    
 });
